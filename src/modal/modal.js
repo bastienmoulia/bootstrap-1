@@ -767,7 +767,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.multiMap', 'ui.bootstrap.sta
 
                   // the third param will make the controller instantiate later,private api
                   // @see https://github.com/angular/angular.js/blob/master/src/ng/controller.js#L126
-                  ctrlInstantiate = $controller(modalOptions.controller, ctrlLocals, true, modalOptions.controllerAs);
+                  ctrlInstantiate = $controller(modalOptions.controller, ctrlLocals, true, identifierForController(modalOptions.controller) || modalOptions.controllerAs || '$ctrl');
                   if (modalOptions.controllerAs && modalOptions.bindToController) {
                     ctrlInstance = ctrlInstantiate.instance;
                     ctrlInstance.$close = modalScope.$close;
@@ -825,6 +825,14 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.multiMap', 'ui.bootstrap.sta
         }
       ]
     };
+
+    var CNTRL_REG = /^(\S+)(\s+as\s+([\w$]+))?$/;
+    function identifierForController(controller) {
+      if (angular.isString(controller)) {
+        var match = CNTRL_REG.exec(controller);
+        if (match) {return match[3];}
+      }
+    }
 
     return $modalProvider;
   });

@@ -1066,12 +1066,12 @@ describe('$uibModal', function() {
 
     describe('controller', function() {
       it('should accept controllers and inject modal instances', function() {
-        var TestCtrl = function($scope, $uibModalInstance) {
-          $scope.fromCtrl = 'Content from ctrl';
-          $scope.isModalInstance = angular.isObject($uibModalInstance) && angular.isFunction($uibModalInstance.close);
-        };
+        $controllerProvider.register('TestCtrl', function($uibModalInstance) {
+          this.fromCtrl = 'Content from ctrl';
+          this.isModalInstance = angular.isObject($uibModalInstance) && angular.isFunction($uibModalInstance.close);
+        });
 
-        open({template: '<div>{{fromCtrl}} {{isModalInstance}}</div>', controller: TestCtrl});
+        open({template: '<div>{{$ctrl.fromCtrl}} {{$ctrl.isModalInstance}}</div>', controller: 'TestCtrl'});
         expect($document).toHaveModalOpenWithContent('Content from ctrl true', 'div');
       });
 

@@ -13,7 +13,6 @@ angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($uibMo
       ariaDescribedBy: 'modal-body',
       templateUrl: 'myModalContent.html',
       controller: 'ModalInstanceCtrl',
-      controllerAs: '$ctrl',
       size: size,
       appendTo: parentElem,
       resolve: {
@@ -56,7 +55,7 @@ angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($uibMo
       templateUrl: 'stackedModal.html',
       size: 'sm',
       controller: function($scope) {
-        $scope.name = 'bottom';  
+        $scope.name = 'bottom';
       }
     });
 
@@ -67,7 +66,7 @@ angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($uibMo
       templateUrl: 'stackedModal.html',
       size: 'sm',
       controller: function($scope) {
-        $scope.name = 'top';  
+        $scope.name = 'top';
       }
     });
   };

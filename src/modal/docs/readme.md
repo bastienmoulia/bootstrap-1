@@ -54,7 +54,7 @@ The `$uibModal` service has only one method: `open(options)`.
   A controller for the modal instance, either a controller name as a string, or an inline controller function, optionally wrapped in array notation for dependency injection. Allows the controller-as syntax. Has a special `$uibModalInstance` injectable to access the modal instance.
 
 * `controllerAs`
-  _(Type: `string`, Example: `ctrl`)_ -
+  _(Type: `string`, Example: `ctrl`, Default: `$ctrl`)_ -
   An alternative to the controller-as syntax. Requires the `controller` option to be provided as well.
 
 * `keyboard` -
